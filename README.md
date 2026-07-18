@@ -2,12 +2,9 @@
 
 # 🛒 Shopping 电商平台
 
-**全栈电商平台 | Spring Boot 3.1 + Vue 3 + 微服务 + AI**
-
-[![JDK](https://img.shields.io/badge/JDK-17-blue)](https://adoptium.net/)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.1-brightgreen)](https://spring.io/projects/spring-boot)
-[![Vue](https://img.shields.io/badge/Vue-3.3-4FC08D)](https://vuejs.org/)
-[![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
+> 一个功能完整的全栈电商平台 —— 覆盖 C 端用户前台与 B 端管理后台，集成 SaToken 认证鉴权、多模型 AI 智能客服、Elasticsearch 中文分词搜索、秒杀/优惠券/签到系统、数据大屏可视化、Kafka 事件驱动、MinIO 对象存储，Docker 容器化部署等企业级能力。
+>
+> **适合作为高等院校学子参考的毕业设计模板。**
 
 </div>
 
