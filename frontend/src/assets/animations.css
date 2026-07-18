@@ -1,0 +1,241 @@
+/* ============================================================
+   Shopping 商城 - 动态动画效果库
+   ============================================================ */
+
+/* ===== 页面过渡动画 ===== */
+.page-enter-active {
+  animation: pageIn 0.3s ease-out;
+}
+.page-leave-active {
+  animation: pageOut 0.2s ease-in;
+}
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pageOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-10px); }
+}
+
+/* ===== 淡入动画 ===== */
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ===== 从下方滑入 ===== */
+.slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== 从左侧滑入 ===== */
+.slide-left {
+  animation: slideLeft 0.5s ease-out;
+}
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ===== 缩放进入 ===== */
+.scale-in {
+  animation: scaleIn 0.4s ease-out;
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ===== 弹跳效果 ===== */
+.bounce-in {
+  animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+@keyframes bounceIn {
+  from { opacity: 0; transform: scale(0.5); }
+  60% { transform: scale(1.05); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ===== 浮动动画（hover） ===== */
+.float-effect {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.float-effect:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+
+/* ===== 渐变边框 ===== */
+.gradient-border {
+  position: relative;
+}
+.gradient-border::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* ===== 扫光效果 ===== */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: rotate(25deg);
+  animation: shimmer 3s infinite;
+}
+@keyframes shimmer {
+  0% { left: -60%; }
+  100% { left: 120%; }
+}
+
+/* ===== 脉搏动画（用于加载/通知） ===== */
+.pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ===== 旋转加载 ===== */
+.spin {
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ===== 计数器数字动画 ===== */
+.count-up {
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+/* ===== 商品卡片入场序列动画 ===== */
+.product-card-animate {
+  animation: cardIn 0.5s ease-out both;
+}
+.product-card-animate:nth-child(1) { animation-delay: 0s; }
+.product-card-animate:nth-child(2) { animation-delay: 0.05s; }
+.product-card-animate:nth-child(3) { animation-delay: 0.1s; }
+.product-card-animate:nth-child(4) { animation-delay: 0.15s; }
+.product-card-animate:nth-child(5) { animation-delay: 0.2s; }
+.product-card-animate:nth-child(6) { animation-delay: 0.25s; }
+.product-card-animate:nth-child(7) { animation-delay: 0.3s; }
+.product-card-animate:nth-child(8) { animation-delay: 0.35s; }
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ===== 无限上下浮动（用于Banner装饰元素） ===== */
+.float-up-down {
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+@keyframes floatUpDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ===== 价格标签跳动 ===== */
+.price-beat {
+  animation: priceBeat 1.5s ease-in-out infinite;
+}
+@keyframes priceBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* ===== 渐入序列（用于分类图标） ===== */
+.stagger-fade-in > * {
+  animation: staggerFadeIn 0.4s ease-out both;
+}
+.stagger-fade-in > *:nth-child(1) { animation-delay: 0s; }
+.stagger-fade-in > *:nth-child(2) { animation-delay: 0.05s; }
+.stagger-fade-in > *:nth-child(3) { animation-delay: 0.1s; }
+.stagger-fade-in > *:nth-child(4) { animation-delay: 0.15s; }
+.stagger-fade-in > *:nth-child(5) { animation-delay: 0.2s; }
+.stagger-fade-in > *:nth-child(6) { animation-delay: 0.25s; }
+.stagger-fade-in > *:nth-child(7) { animation-delay: 0.3s; }
+.stagger-fade-in > *:nth-child(8) { animation-delay: 0.35s; }
+@keyframes staggerFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== 通知抖动 ===== */
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-3px); }
+  20%, 40%, 60%, 80% { transform: translateX(3px); }
+}
+
+/* ===== 渐变色流动 ===== */
+.gradient-flow {
+  background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+  background-size: 200% 100%;
+  animation: gradientFlow 3s ease infinite;
+}
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== 星空背景（用于大屏） ===== */
+.star-bg {
+  position: relative;
+  overflow: hidden;
+}
+.star-bg::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.8) 0%, transparent 100%),
+    radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 50% 10%, rgba(255,255,255,0.9) 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 40%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 90% 80%, rgba(255,255,255,0.7) 0%, transparent 100%);
+  animation: starDrift 20s linear infinite;
+  pointer-events: none;
+}
+@keyframes starDrift {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-10%, -10%); }
+}
+
+/* ===== 计数器滚动数字 ===== */
+@keyframes countNumber {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

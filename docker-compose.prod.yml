@@ -1,0 +1,34 @@
+# 生产环境 Docker Compose 覆盖配置
+version: '3.8'
+
+services:
+  backend:
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      NACOS_ADDR: nacos:8848
+      LOGSTASH_HOST: logstash
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: '2'
+          memory: 1G
+        reservations:
+          cpus: '1'
+          memory: 512M
+
+  frontend:
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: '1'
+          memory: 256M
+
+  mysql:
+    deploy:
+      resources:
+        limits:
+          memory: 2G

@@ -1,0 +1,163 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/plain,text/css,application/javascript
+    min-response-size: 1024
+
+spring:
+  application:
+    name: shopping-backend
+
+  # 数据源配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/shopping?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: 1234
+
+  # Redis配置
+  redis:
+    host: localhost
+    port: 6379
+    password: 
+    database: 0
+    timeout: 10000
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+
+  # Kafka配置（默认关闭监听器，需启动Kafka后开启）
+  kafka:
+    bootstrap-servers: localhost:9092
+    listener:
+      auto-startup: false
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      retries: 3
+      acks: 1
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-offset-reset: latest
+      enable-auto-commit: true
+    listener:
+      concurrency: 3
+
+  # Elasticsearch配置
+  elasticsearch:
+    uris: localhost:9200
+    username: 
+    password: 
+
+  # Jackson配置
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    serialization:
+      write-dates-as-timestamps: false
+    default-property-inclusion: non_null
+
+  # 文件上传配置
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+
+# MyBatis Plus配置
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml
+  type-aliases-package: com.shopping.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+# 文件上传路径
+file:
+  upload:
+    path: ./uploads
+    url: http://localhost:8080/api/uploads
+
+# LLM配置（多模型）
+llm:
+  default-model: openai
+  models:
+    - name: openai
+      provider: openai
+      api-key: ${LLM_API_KEY:sk-your-key}
+      base-url: ${LLM_BASE_URL:https://api.openai.com/v1}
+      model: ${LLM_MODEL:gpt-3.5-turbo}
+      temperature: 0.7
+      max-tokens: 2048
+      enabled: true
+    - name: ollama
+      provider: ollama
+      api-key: ollama
+      base-url: http://localhost:11434/v1
+      model: qwen2:7b
+      temperature: 0.8
+      max-tokens: 2048
+      enabled: false
+
+# MinIO 对象存储
+minio:
+  endpoint: http://localhost:9000
+  access-key: minioadmin
+  secret-key: minioadmin
+  bucket: shopping
+  stream-enabled: true
+  system-prompt: |
+    你是Shopping电商平台的智能客服助手。你可以帮助用户：
+    1. 查询商品信息和推荐
+    2. 解答订单相关问题
+    3. 处理售后和退换货咨询
+    4. 回答平台使用问题
+    5. 提供购物建议
+    
+    请用友好、专业的语气回答用户问题。如果不确定，请说明并建议用户联系人工客服。
+
+# 日志配置
+logging:
+  level:
+    com.shopping: debug
+
+# Nacos 注册中心（默认关闭，需启动 Nacos 后开启）
+spring.cloud.nacos.discovery:
+  enabled: false
+  server-addr: ${NACOS_ADDR:localhost:8848}
+
+# Sentinel 限流降级（默认关闭）
+spring.cloud.sentinel:
+  enabled: false
+  transport:
+    dashboard: ${SENTINEL_DASHBOARD:localhost:8718}
+  eager: true
+
+# OpenFeign 配置
+spring.cloud.openfeign:
+  client:
+    config:
+      default:
+        connect-timeout: 5000
+        read-timeout: 10000
+  compression:
+    request.enabled: true
+    response.enabled: true
+
+# 日志输出到 Logstash
+logging.logstash:
+  enabled: true
+  host: ${LOGSTASH_HOST:localhost}
+  port: 5000

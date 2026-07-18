@@ -1,0 +1,27 @@
+# 根目录 .dockerignore
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# 日志
+*.log
+
+# Docker
+docker-compose.yml
+
+# 大数据文件（可选，如果不需要大数据服务）
+# bigdata/
+
+# 文档
+docs/
+*.md
+
+# 临时文件
+.tmp/
+tmp/

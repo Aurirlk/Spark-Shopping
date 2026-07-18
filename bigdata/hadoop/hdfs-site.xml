@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  HDFS配置文件
+  适用于单机/伪分布式模式
+-->
+<configuration>
+    <!-- 副本数量（单机模式设为1） -->
+    <property>
+        <name>dfs.replication</name>
+        <value>1</value>
+        <description>HDFS副本数量</description>
+    </property>
+
+    <!-- NameNode数据目录 -->
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>file:///opt/hadoop/hdfs/namenode</value>
+        <description>NameNode元数据存储目录</description>
+    </property>
+
+    <!-- DataNode数据目录 -->
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>file:///opt/hadoop/hdfs/datanode</value>
+        <description>DataNode数据存储目录</description>
+    </property>
+
+    <!-- NameNode Web UI -->
+    <property>
+        <name>dfs.namenode.http-address</name>
+        <value>localhost:9870</value>
+        <description>NameNode Web界面地址</description>
+    </property>
+
+    <!-- 权限检查 -->
+    <property>
+        <name>dfs.permissions.enabled</name>
+        <value>false</value>
+        <description>关闭权限检查（开发环境）</description>
+    </property>
+</configuration>

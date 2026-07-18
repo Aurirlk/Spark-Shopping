@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shopping.mapper.ProductMapper">
+
+    <!-- 分页查询商品 -->
+    <select id="selectProductPage" resultType="com.shopping.entity.Product">
+        SELECT p.*, c.name as category_name
+        FROM product p
+        LEFT JOIN category c ON p.category_id = c.id
+        <where>
+            <if test="categoryId != null and categoryId != 0">
+                AND p.category_id = #{categoryId}
+            </if>
+            <if test="keyword != null and keyword != ''">
+                AND (p.name LIKE CONCAT('%', #{keyword}, '%')
+                     OR p.description LIKE CONCAT('%', #{keyword}, '%'))
+            </if>
+            <if test="status != null">
+                AND p.status = #{status}
+            </if>
+        </where>
+        ORDER BY p.create_time DESC
+    </select>
+
+</mapper>

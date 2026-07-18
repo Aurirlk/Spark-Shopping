@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Hadoop核心配置文件
+  适用于单机/伪分布式模式
+-->
+<configuration>
+    <!-- HDFS默认文件系统 -->
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://localhost:9000</value>
+        <description>HDFS的URI</description>
+    </property>
+
+    <!-- Hadoop临时目录 -->
+    <property>
+        <name>hadoop.tmp.dir</name>
+        <value>/opt/hadoop/tmp</value>
+        <description>Hadoop临时文件目录</description>
+    </property>
+
+    <!-- IO缓冲区大小 -->
+    <property>
+        <name>io.file.buffer.size</name>
+        <value>131072</value>
+        <description>读写文件的缓冲区大小</description>
+    </property>
+</configuration>

@@ -1,0 +1,43 @@
+# 后端 .dockerignore
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.project
+.classpath
+.settings/
+
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.xml
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# 日志
+*.log
+logs/
+
+# 临时文件
+*.tmp
+*.bak
+*.swp
+*~
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# 文档
+README.md
+docs/
+*.md
+
+# 测试
+**/src/test/

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  MapReduce配置文件
+-->
+<configuration>
+    <!-- MapReduce框架名称 -->
+    <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+        <description>MapReduce运行框架</description>
+    </property>
+
+    <!-- Map任务内存 -->
+    <property>
+        <name>mapreduce.map.memory.mb</name>
+        <value>1024</value>
+        <description>Map任务内存大小</description>
+    </property>
+
+    <!-- Reduce任务内存 -->
+    <property>
+        <name>mapreduce.reduce.memory.mb</name>
+        <value>1024</value>
+        <description>Reduce任务内存大小</description>
+    </property>
+
+    <!-- 历史服务器地址 -->
+    <property>
+        <name>mapreduce.jobhistory.address</name>
+        <value>localhost:10020</value>
+        <description>JobHistory Server地址</description>
+    </property>
+
+    <!-- 历史服务器Web UI -->
+    <property>
+        <name>mapreduce.jobhistory.webapp.address</name>
+        <value>localhost:19888</value>
+        <description>JobHistory Server Web界面</description>
+    </property>
+</configuration>
