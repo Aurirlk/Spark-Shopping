@@ -34,3 +34,6 @@ Desktop.ini
 *.tmp
 /tmp/
 /app.log
+
+# ===== Internal =====
+.omo/
